@@ -519,7 +519,7 @@
         <li>✅ 모텔명·로고 커스터마이징</li>
         <li>✅ 요청 기능 개발 우선 반영</li>
       </ul>
-      <a href="/cdn-cgi/l/email-protection#2d404443464443181f141b6d434c5b485f034e4240125e584f47484e5910c0b899c1b4adc6a6817d607e0dc79881c6a2a80dc68195c1b0b5" style="display:block;background:var(--moon);border-radius:8px;padding:.8rem;text-decoration:none;color:var(--ink);font-weight:900;transition:opacity .2s;" onmouseover="this.style.opacity='.85'" onmouseout="this.style.opacity='1'">구독 문의하기</a>
+      <a href="mailto:minkin5296@naver.com?subject=해와달PMS 구독 문의" style="display:block;background:var(--moon);border-radius:8px;padding:.8rem;text-decoration:none;color:var(--ink);font-weight:900;transition:opacity .2s;" onmouseover="this.style.opacity='.85'" onmouseout="this.style.opacity='1'">구독 문의하기</a>
     </div>
 
   </div>
@@ -541,9 +541,9 @@
       <span class="dl-meta">ZIP · 약 64MB · 무료 · Windows 64비트 전용</span>
       <span class="dl-meta">
         문의·구매 상담:
-        <a href="/cdn-cgi/l/email-protection#64090d0a0f0d0a51565d52240a051201164a070b09" style="color:var(--moon2);"><span class="__cf_email__" data-cfemail="cba6a2a5a0a2a5fef9f2fd8ba5aabdaeb9e5a8a4a6">[email&#160;protected]</span></a>
+        <a href="mailto:minkin5296@naver.com" style="color:var(--moon2);">minkin5296@naver.com</a>
         &nbsp;|&nbsp;
-        카카오톡: <strong style="color:var(--moon2);"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="026f6b6c696b6c37303b34426c637467702c616d6f">[email&#160;protected]</a></strong>
+        카카오톡: <strong style="color:var(--moon2);">minkin5296@naver.com</strong>
       </span>
     </div>
   </div>
@@ -586,5 +586,23 @@
 <!-- ══ 푸터 ══ -->
 <footer>
   <p><strong>해와달 모텔 PMS</strong> &nbsp;·&nbsp; v7.3 &nbsp;·&nbsp; Windows 10/11 x64</p>
-  <p>문의: <a href="/cdn-cgi/l/email-protection#95f8fcfbfefcfba0a7aca3d5fbf4e3f0e7bbf6faf8" style="color:var(--moon);"><span class="__cf_email__" data-cfemail="177a7e797c7e7922252e215779766172653974787a">[email&#160;protected]</span></a> &nbsp;|&nbsp; 카카오: <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="d4b9bdbabfbdbae1e6ede294bab5a2b1a6fab7bbb9">[email&#160;protected]</a></p>
-  <p style="m
+  <p>문의: <a href="mailto:minkin5296@naver.com" style="color:var(--moon);">minkin5296@naver.com</a> &nbsp;|&nbsp; 카카오: minkin5296@naver.com</p>
+  <p style="margin-top:.5rem;">© 2026 해와달 PMS. 무료로 사용하고 공유하세요.</p>
+</footer>
+
+<script>
+  // ── FAQ 토글 ──
+  document.querySelectorAll('.faq-q').forEach(q => {
+    q.addEventListener('click', () => {
+      q.parentElement.classList.toggle('open');
+    });
+  });
+
+  // ── 스크롤 페이드인 ──
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>

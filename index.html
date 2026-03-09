@@ -132,6 +132,11 @@
       font-weight: 700;
       margin-bottom: 1rem;
     }
+    .hero-release-note {
+      font-size: .86rem;
+      color: var(--muted);
+      margin-bottom: 1rem;
+    }
     .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
     .btn-primary {
       display: inline-flex; align-items: center; gap: .5rem;
@@ -363,6 +368,7 @@
   <div>
     <div class="hero-badge">✨ Windows 전용 · 설치 불필요</div>
     <div class="hero-release" id="heroReleaseMeta">최신 버전: 확인 중...</div>
+    <div class="hero-release-note" id="heroReleaseNotesMeta">최근 변경사항: 확인 중...</div>
     <h1>
       모텔 운영을<br>
       <em>한 화면</em>으로<br>
@@ -518,6 +524,7 @@
       <span class="dl-meta">Supabase 스타터 · 배치파일 + SQL 스키마 + 연동 가이드 + README 포함</span>
       <span class="dl-meta">최신 반영: 2026-03-08 · Supabase direct-sync 시작 스크립트 개선</span>
       <span class="dl-meta" id="releaseMeta">최신 버전: 확인 중...</span>
+      <span class="dl-meta" id="releaseNotesMeta">최근 변경사항: 확인 중...</span>
       <span class="dl-meta">
         문의·구매 상담:
         <a href="mailto:minkim5296@naver.com" style="color:var(--moon2);">minkim5296@naver.com</a>
@@ -591,10 +598,12 @@
   }, { threshold: 0.12 });
   document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
 
-  // 다운로드 섹션 버전/배포일 자동 반영
+  // 홈페이지 버전/배포일/변경사항 자동 반영
   (async () => {
     const releaseMetaEl = document.getElementById('releaseMeta');
     const heroReleaseMetaEl = document.getElementById('heroReleaseMeta');
+    const releaseNotesEl = document.getElementById('releaseNotesMeta');
+    const heroReleaseNotesEl = document.getElementById('heroReleaseNotesMeta');
     const setupBtnEl = document.getElementById('setupDownloadBtn');
     if (!releaseMetaEl) return;
 
@@ -605,12 +614,22 @@
 
       const version = String(manifest.version || '').trim();
       const releasedAt = String(manifest.released_at || '').trim();
+      const notes = String(manifest.notes || '').trim();
 
       if (version) {
         const releaseText = `최신 버전: v${version} · 배포일: ${releasedAt || '-'}`;
         releaseMetaEl.textContent = releaseText;
         if (heroReleaseMetaEl) {
           heroReleaseMetaEl.textContent = releaseText;
+        }
+        const notesText = notes
+          ? `최근 변경사항: ${notes}`
+          : '최근 변경사항: 업데이트 노트 없음';
+        if (releaseNotesEl) {
+          releaseNotesEl.textContent = notesText;
+        }
+        if (heroReleaseNotesEl) {
+          heroReleaseNotesEl.textContent = notesText;
         }
         if (setupBtnEl) {
           setupBtnEl.innerHTML = `⬇&nbsp;&nbsp;해와달 PMS v${version} 다운로드`;
@@ -621,11 +640,23 @@
         if (heroReleaseMetaEl) {
           heroReleaseMetaEl.textContent = '최신 버전 정보를 확인할 수 없습니다.';
         }
+        if (releaseNotesEl) {
+          releaseNotesEl.textContent = '최근 변경사항 정보를 확인할 수 없습니다.';
+        }
+        if (heroReleaseNotesEl) {
+          heroReleaseNotesEl.textContent = '최근 변경사항 정보를 확인할 수 없습니다.';
+        }
       }
     } catch (err) {
       releaseMetaEl.textContent = '최신 버전 정보를 불러오지 못했습니다. 잠시 후 새로고침해 주세요.';
       if (heroReleaseMetaEl) {
         heroReleaseMetaEl.textContent = '최신 버전 정보를 불러오지 못했습니다.';
+      }
+      if (releaseNotesEl) {
+        releaseNotesEl.textContent = '최근 변경사항 정보를 불러오지 못했습니다.';
+      }
+      if (heroReleaseNotesEl) {
+        heroReleaseNotesEl.textContent = '최근 변경사항 정보를 불러오지 못했습니다.';
       }
       console.warn('releaseMeta load failed:', err);
     }

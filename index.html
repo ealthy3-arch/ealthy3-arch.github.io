@@ -126,6 +126,12 @@
       margin-bottom: 2.4rem; max-width: 460px;
       font-weight: 300; line-height: 1.8;
     }
+    .hero-release {
+      font-size: .9rem;
+      color: var(--sea2);
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
     .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
     .btn-primary {
       display: inline-flex; align-items: center; gap: .5rem;
@@ -356,6 +362,7 @@
 <section class="hero">
   <div>
     <div class="hero-badge">✨ Windows 전용 · 설치 불필요</div>
+    <div class="hero-release" id="heroReleaseMeta">최신 버전: 확인 중...</div>
     <h1>
       모텔 운영을<br>
       <em>한 화면</em>으로<br>
@@ -587,6 +594,7 @@
   // 다운로드 섹션 버전/배포일 자동 반영
   (async () => {
     const releaseMetaEl = document.getElementById('releaseMeta');
+    const heroReleaseMetaEl = document.getElementById('heroReleaseMeta');
     const setupBtnEl = document.getElementById('setupDownloadBtn');
     if (!releaseMetaEl) return;
 
@@ -599,16 +607,26 @@
       const releasedAt = String(manifest.released_at || '').trim();
 
       if (version) {
-        releaseMetaEl.textContent = `최신 버전: v${version} · 배포일: ${releasedAt || '-'}`;
+        const releaseText = `최신 버전: v${version} · 배포일: ${releasedAt || '-'}`;
+        releaseMetaEl.textContent = releaseText;
+        if (heroReleaseMetaEl) {
+          heroReleaseMetaEl.textContent = releaseText;
+        }
         if (setupBtnEl) {
           setupBtnEl.innerHTML = `⬇&nbsp;&nbsp;해와달 PMS v${version} 다운로드`;
           setupBtnEl.setAttribute('aria-label', `해와달 PMS v${version} 다운로드`);
         }
       } else {
         releaseMetaEl.textContent = '최신 버전 정보 없음 (update_manifest.json 확인 필요)';
+        if (heroReleaseMetaEl) {
+          heroReleaseMetaEl.textContent = '최신 버전 정보를 확인할 수 없습니다.';
+        }
       }
     } catch (err) {
       releaseMetaEl.textContent = '최신 버전 정보를 불러오지 못했습니다. 잠시 후 새로고침해 주세요.';
+      if (heroReleaseMetaEl) {
+        heroReleaseMetaEl.textContent = '최신 버전 정보를 불러오지 못했습니다.';
+      }
       console.warn('releaseMeta load failed:', err);
     }
   })();

@@ -203,6 +203,14 @@
       letter-spacing: .01em;
       line-height: 1.05;
     }
+    .dl-brand {
+      font-family: var(--brand-script);
+      font-weight: 400;
+      letter-spacing: .01em;
+      line-height: 1;
+      font-size: 1.2em;
+      vertical-align: baseline;
+    }
     nav ul { list-style: none; display: flex; gap: 2rem; }
     nav ul a { text-decoration: none; color: var(--muted); font-size: .9rem;
       font-weight: 500; transition: color .2s; }
@@ -496,6 +504,13 @@
     }
     #download .section-title { color: #fff; }
     #download .section-sub   { color: rgba(255,255,255,.6); margin: 0 auto 2.5rem; }
+    .install-screen-title {
+      color: var(--moon2);
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      letter-spacing: .01em;
+    }
     .dl-box {
       display: inline-flex; flex-direction: column; align-items: center; gap: 1rem;
     }
@@ -751,9 +766,10 @@
       Windows 10 / 11 · 64비트<br>
       별도 설치·Python·.NET 불필요 — setup.exe 실행 후 바로 사용
     </p>
+    <div class="install-screen-title"><span class="dl-brand">해와달</span> Windows Installer</div>
     <div class="dl-box">
       <a href="HaewadalPMS_Setup_Web.zip" download class="btn-dl" id="setupDownloadBtn">
-        ⬇&nbsp;&nbsp;해와달 PMS v7.1.0 다운로드
+        ⬇&nbsp;&nbsp;<span class="dl-brand">해와달</span> PMS v7.1.0 다운로드
       </a>
       <a href="https://drive.usercontent.google.com/download?id=1gE-ZSMRFl4kupYwhqfMDVcaH3CeKEMXa&export=download&confirm=t" class="btn-dl-secondary" id="driveDownloadBtn" target="_blank" rel="noopener noreferrer">
         ☁️&nbsp;&nbsp;구글드라이브 대체 다운로드
@@ -913,7 +929,7 @@
           heroReleaseNotesEl.textContent = notesText;
         }
         if (setupBtnEl) {
-          setupBtnEl.innerHTML = `⬇&nbsp;&nbsp;해와달 PMS v${version} 다운로드`;
+          setupBtnEl.innerHTML = `⬇&nbsp;&nbsp;<span class="dl-brand">해와달</span> PMS v${version} 다운로드`;
           setupBtnEl.setAttribute('aria-label', `해와달 PMS v${version} 다운로드`);
           if (preferredDownloadUrl) {
             try {

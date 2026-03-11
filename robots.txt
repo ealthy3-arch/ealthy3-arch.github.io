@@ -1,7 +1,8 @@
-User-agent: Yeti
+﻿User-agent: Yeti
 Allow: /
 
 User-agent: *
 Allow: /
 
-Sitemap: https://ealthy3-arch.github.io/sitemap.xml
+Sitemap: https://xn--bk1bn08au7k.kr/sitemap.xml
+

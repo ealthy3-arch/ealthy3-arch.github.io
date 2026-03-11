@@ -1,7 +1,7 @@
 ﻿{
   "version": "7.1.0",
-  "download_url": "https://xn--bk1bn08au7k.kr/setup.exe",
-  "web_download_url": "https://xn--bk1bn08au7k.kr/HaewadalPMS_Setup_Web.zip",
+  "download_url": "https://ealthy3-arch.github.io/setup.exe",
+  "web_download_url": "https://ealthy3-arch.github.io/HaewadalPMS_Setup_Web.zip",
   "fallback_download_url": "https://drive.usercontent.google.com/download?id=1gE-ZSMRFl4kupYwhqfMDVcaH3CeKEMXa&export=download&confirm=t",
   "notes": "Icon applied, top connection-check button added, window clipping improved for seniors.",
   "released_at": "2026-03-11",
@@ -12,4 +12,5 @@
   "reservation_yanolja_url": "https://nol.yanolja.com/stay/domestic/1000103937",
   "reservation_trip_url": "https://www.trip.com/w/ph3tujZFqT2"
 }
+
 

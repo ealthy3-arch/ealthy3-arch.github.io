@@ -98,7 +98,7 @@
     }
 
     .container {
-      width: min(1160px, calc(100% - 32px));
+      width: min(1120px, calc(100% - 32px));
       margin: 0 auto;
     }
 
@@ -178,18 +178,20 @@
       text-transform: uppercase;
     }
     .title-main {
-      margin: .35rem 0 0;
+      margin: .35rem auto 0;
       font-size: clamp(1.95rem, 4vw, 3.05rem);
       line-height: 1.22;
       letter-spacing: -.03em;
       color: #0f2f49;
       font-weight: 900;
+      max-width: 900px;
     }
     .title-sub {
-      margin: .85rem 0 1.25rem;
+      margin: .85rem auto 1.25rem;
       font-size: clamp(1.04rem, 2vw, 1.23rem);
       color: #3d5468;
       font-weight: 500;
+      max-width: 760px;
     }
     .title-meta {
       display: flex;
@@ -252,12 +254,16 @@
       background: transparent;
       border: 0;
       border-radius: 0;
-      padding: clamp(6px, 1.5vw, 12px) 0;
+      padding: clamp(10px, 1.8vw, 16px) 0;
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 1rem 1.3rem;
+      gap: 1.1rem 2rem;
       align-items: center;
-      margin-bottom: 28px;
+      margin-bottom: 34px;
+    }
+    .svc-card + .svc-card {
+      border-top: 1px solid #e1e7ef;
+      padding-top: 28px;
     }
     .svc-card.reverse .svc-thumb { order: -1; }
     .svc-desc-wrap {
@@ -292,7 +298,8 @@
     .svc-desc {
       margin: 0;
       color: #415364;
-      font-size: 1.03rem;
+      font-size: 1.06rem;
+      line-height: 1.8;
       font-weight: 500;
     }
     .svc-thumb {
@@ -305,7 +312,7 @@
     .svc-thumb img {
       width: 100%;
       display: block;
-      aspect-ratio: 16/10;
+      aspect-ratio: 16/9;
       object-fit: cover;
     }
 

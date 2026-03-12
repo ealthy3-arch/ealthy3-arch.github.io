@@ -164,6 +164,7 @@
       color: var(--ink);
       line-height: 1.7;
       overflow-x: hidden;
+      padding-bottom: 96px;
     }
 
     /* ── 네비 ── */
@@ -478,6 +479,26 @@
     }
     .menu-open-btn:focus,
     .menu-open-btn:hover { background: #1f4d6b; }
+    .floating-menu-open {
+      position: fixed;
+      left: 50%;
+      transform: translateX(-50%);
+      bottom: 16px;
+      width: min(92vw, 420px);
+      min-height: 64px;
+      border: 0;
+      border-radius: 14px;
+      background: #10293a;
+      color: #fff;
+      font-size: 1.12rem;
+      font-weight: 900;
+      letter-spacing: -.01em;
+      box-shadow: 0 12px 32px rgba(15,17,23,.32);
+      z-index: 9000;
+      cursor: pointer;
+    }
+    .floating-menu-open:focus,
+    .floating-menu-open:hover { background: #1f4d6b; }
     .menu-help {
       margin: .65rem 0 0;
       color: #2f3c4a;
@@ -553,6 +574,7 @@
       font-weight: 500;
     }
     body.menu-open { overflow: hidden; }
+    body.menu-open .floating-menu-open { display: none; }
     .real-photo-grid {
       margin-top: 2rem;
       display: grid;
@@ -820,7 +842,7 @@
     <h2 class="section-title"><span class="brand-inline">해와달</span> 실제 매장 사진</h2>
     <p class="section-sub">홈페이지 이미지가 아닌 실제 촬영 사진입니다. 현장 분위기를 바로 확인할 수 있습니다.</p>
     <div class="menu-launch-wrap">
-      <button type="button" class="menu-open-btn" id="quickMenuOpenBtn" aria-haspopup="dialog" aria-controls="quickMenuDialog" aria-expanded="false">☰ 큰 메뉴 열기</button>
+      <button type="button" class="menu-open-btn" id="quickMenuOpenBtn" data-open-quick-menu="true" aria-haspopup="dialog" aria-controls="quickMenuDialog" aria-expanded="false">☰ 큰 메뉴 열기</button>
       <p class="menu-help">위치·주차·예약 메뉴를 크게 보려면 이 버튼을 누르세요.</p>
     </div>
     <div class="quick-menu-modal" id="quickMenuDialog" role="dialog" aria-modal="true" aria-labelledby="quickMenuTitle" hidden>
@@ -1039,6 +1061,8 @@
   <p style="margin-top:.5rem;">© 2026 해와달 PMS. 계약된 사업장 외 무단 배포·재판매 금지.</p>
 </footer>
 
+<button type="button" class="floating-menu-open" data-open-quick-menu="true" aria-label="큰 메뉴 열기" aria-controls="quickMenuDialog" aria-expanded="false">☰ 메뉴 열기</button>
+
 <script>
   // ── FAQ 토글 ──
   document.querySelectorAll('.faq-q').forEach(q => {
@@ -1055,25 +1079,33 @@
 
   // ── 실제매장 빠른 메뉴 팝업 ──
   (function () {
-    const openBtn = document.getElementById('quickMenuOpenBtn');
+    const openButtons = Array.from(document.querySelectorAll('[data-open-quick-menu="true"]'));
     const closeBtn = document.getElementById('quickMenuCloseBtn');
     const dialog = document.getElementById('quickMenuDialog');
-    if (!openBtn || !closeBtn || !dialog) return;
+    if (!openButtons.length || !closeBtn || !dialog) return;
+    let lastTrigger = null;
 
-    function openDialog() {
+    function openDialog(trigger) {
       dialog.hidden = false;
       document.body.classList.add('menu-open');
-      openBtn.setAttribute('aria-expanded', 'true');
+      openButtons.forEach(btn => btn.setAttribute('aria-expanded', 'true'));
+      lastTrigger = trigger || openButtons[0];
     }
 
     function closeDialog() {
       dialog.hidden = true;
       document.body.classList.remove('menu-open');
-      openBtn.setAttribute('aria-expanded', 'false');
-      openBtn.focus();
+      openButtons.forEach(btn => btn.setAttribute('aria-expanded', 'false'));
+      if (lastTrigger) {
+        lastTrigger.focus();
+      }
     }
 
-    openBtn.addEventListener('click', openDialog);
+    openButtons.forEach(btn => {
+      btn.addEventListener('click', function () {
+        openDialog(btn);
+      });
+    });
     closeBtn.addEventListener('click', closeDialog);
     dialog.addEventListener('click', function (event) {
       if (event.target === dialog) closeDialog();

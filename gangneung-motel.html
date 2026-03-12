@@ -42,7 +42,7 @@
   }
   </script>
   <style>
-    body { font-family: "Noto Sans KR", Arial, sans-serif; margin: 0; background: #faf9f6; color: #111827; }
+    body { font-family: "Noto Sans KR", Arial, sans-serif; margin: 0; background: #faf9f6; color: #111827; padding-bottom: 96px; }
     .wrap { max-width: 960px; margin: 0 auto; padding: 36px 20px 56px; }
     .logo { width: 108px; height: 108px; border-radius: 18px; border: 1px solid #e5e7eb; background: #d7dbea; display:block; margin-bottom: 14px; }
     h1 { font-size: 2rem; margin: 0 0 12px; }
@@ -67,6 +67,26 @@
     }
     .menu-open-btn:focus,
     .menu-open-btn:hover { background: #1f4d6b; }
+    .floating-menu-open {
+      position: fixed;
+      left: 50%;
+      transform: translateX(-50%);
+      bottom: 16px;
+      width: min(92vw, 420px);
+      min-height: 64px;
+      border: 0;
+      border-radius: 14px;
+      background: #10293a;
+      color: #fff;
+      font-size: 1.12rem;
+      font-weight: 900;
+      letter-spacing: -.01em;
+      box-shadow: 0 12px 32px rgba(15,17,23,.32);
+      z-index: 9000;
+      cursor: pointer;
+    }
+    .floating-menu-open:focus,
+    .floating-menu-open:hover { background: #1f4d6b; }
     .menu-help {
       margin: .65rem 0 0;
       color: #2f3c4a;
@@ -139,6 +159,7 @@
       font-weight: 500;
     }
     body.menu-open { overflow: hidden; }
+    body.menu-open .floating-menu-open { display: none; }
   </style>
 </head>
 <body>
@@ -154,7 +175,7 @@
       <strong>주요 기능:</strong> 객실 상태관리, 예약관리, 결제/환불, 일마감 정산
     </div>
     <div class="menu-launch-wrap">
-      <button type="button" class="menu-open-btn" id="quickMenuOpenBtn" aria-haspopup="dialog" aria-controls="quickMenuDialog" aria-expanded="false">☰ 큰 메뉴 열기</button>
+      <button type="button" class="menu-open-btn" id="quickMenuOpenBtn" data-open-quick-menu="true" aria-haspopup="dialog" aria-controls="quickMenuDialog" aria-expanded="false">☰ 큰 메뉴 열기</button>
       <p class="menu-help">위치·주차·예약 메뉴를 크게 보려면 이 버튼을 누르세요.</p>
     </div>
     <div class="quick-menu-modal" id="quickMenuDialog" role="dialog" aria-modal="true" aria-labelledby="quickMenuTitle" hidden>
@@ -173,27 +194,36 @@
     </div>
     <a class="btn" href="https://ealthy3-arch.github.io/index.html?v=20260311-homefix">해와달모텔 PMS 메인으로 이동</a>
   </div>
+  <button type="button" class="floating-menu-open" data-open-quick-menu="true" aria-label="큰 메뉴 열기" aria-controls="quickMenuDialog" aria-expanded="false">☰ 메뉴 열기</button>
   <script>
     (function () {
-      const openBtn = document.getElementById('quickMenuOpenBtn');
+      const openButtons = Array.from(document.querySelectorAll('[data-open-quick-menu="true"]'));
       const closeBtn = document.getElementById('quickMenuCloseBtn');
       const dialog = document.getElementById('quickMenuDialog');
-      if (!openBtn || !closeBtn || !dialog) return;
+      if (!openButtons.length || !closeBtn || !dialog) return;
+      let lastTrigger = null;
 
-      function openDialog() {
+      function openDialog(trigger) {
         dialog.hidden = false;
         document.body.classList.add('menu-open');
-        openBtn.setAttribute('aria-expanded', 'true');
+        openButtons.forEach(btn => btn.setAttribute('aria-expanded', 'true'));
+        lastTrigger = trigger || openButtons[0];
       }
 
       function closeDialog() {
         dialog.hidden = true;
         document.body.classList.remove('menu-open');
-        openBtn.setAttribute('aria-expanded', 'false');
-        openBtn.focus();
+        openButtons.forEach(btn => btn.setAttribute('aria-expanded', 'false'));
+        if (lastTrigger) {
+          lastTrigger.focus();
+        }
       }
 
-      openBtn.addEventListener('click', openDialog);
+      openButtons.forEach(btn => {
+        btn.addEventListener('click', function () {
+          openDialog(btn);
+        });
+      });
       closeBtn.addEventListener('click', closeDialog);
       dialog.addEventListener('click', function (event) {
         if (event.target === dialog) closeDialog();

@@ -1,6 +1,8 @@
 ﻿{
-    "version":  "7.1.0",
-    "download_url":  "https://ealthy3-arch.github.io/setup.exe",
-    "notes":  "v7.1.0 업데이트: 기능 개선 및 안정성 보강 (변경: haewadal_motel_pms_v6.py, haewadal_pms/database/manager_adapter.py)",
-    "released_at":  "2026-03-17"
+  "version": "7.1.1",
+  "download_url": "https://ealthy3-arch.github.io/setup.exe",
+  "web_download_url": "https://ealthy3-arch.github.io/HaewadalPMS_Setup_Web.zip",
+  "fallback_download_url": "https://drive.usercontent.google.com/download?id=1jkeHMOtRcIGdl00Q_qvbeRvGnb8VbP13&export=download&confirm=t",
+  "notes": "v7.1.1 업데이트: 예약 기본시간/달력 선택, 날짜만 고객조회, 객실카드 1회 클릭 투숙정보 개선",
+  "released_at": "2026-03-20"
 }

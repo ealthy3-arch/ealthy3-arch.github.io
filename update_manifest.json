@@ -3,7 +3,7 @@
   "download_url": "https://ealthy3-arch.github.io/setup.exe",
   "web_download_url": "https://ealthy3-arch.github.io/setup.exe",
   "fallback_download_url": "https://drive.usercontent.google.com/download?id=1jkeHMOtRcIGdl00Q_qvbeRvGnb8VbP13&export=download&confirm=t",
-  "starter_download_url": "https://ealthy3-arch.github.io/setup.exe",
-  "notes": "v7.1.0 setup.exe link applied to main/fallback guide/starter button",
-  "released_at": "2026-03-21"
+  "starter_download_url": "https://ealthy3-arch.github.io/HaewadalPMS_Supabase_Starter.zip",
+  "notes": "v7.1.0 hotfix: check-in Enter/Esc, one-shot clean done, main shortcut stability, checkout lag mitigation",
+  "released_at": "2026-03-22"
 }

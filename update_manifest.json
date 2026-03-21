@@ -1,9 +1,9 @@
 {
   "version": "7.1.0",
-  "download_url": "https://ealthy3-arch.github.io/setup.exe",
-  "web_download_url": "https://ealthy3-arch.github.io/setup.exe",
+  "download_url": "https://ealthy3-arch.github.io/setup_installer.exe",
+  "web_download_url": "https://ealthy3-arch.github.io/setup_installer.exe",
   "fallback_download_url": "https://drive.usercontent.google.com/download?id=1jkeHMOtRcIGdl00Q_qvbeRvGnb8VbP13&export=download&confirm=t",
-  "starter_download_url": "https://ealthy3-arch.github.io/setup.exe",
+  "starter_download_url": "https://ealthy3-arch.github.io/setup_installer.exe",
   "notes": "v7.1.0 hotfix: startup DB fallback, OTA email auto-confirm/cancel import, input stability",
   "released_at": "2026-03-22"
 }

@@ -957,22 +957,22 @@
     <h2 class="section-title">지금 바로 월정액으로<br>도입하세요</h2>
     <p class="section-sub">
       Windows 10 / 11 · 64비트<br>
-      별도 설치·Python·.NET 불필요 — setup_installer.exe 실행 후 바로 사용
+      별도 설치·Python·.NET 불필요 — setup.exe 실행 후 바로 사용
     </p>
     <div class="install-screen-title"><span class="dl-brand">해와달</span> Windows Installer</div>
     <div class="dl-box">
-      <a href="setup_installer.exe" download class="btn-dl" id="setupDownloadBtn">
+      <a href="setup.exe" download class="btn-dl" id="setupDownloadBtn">
         ⬇&nbsp;&nbsp;<span class="dl-brand">해와달</span> PMS v7.1.0 다운로드
       </a>
       <a href="https://drive.usercontent.google.com/download?id=1jkeHMOtRcIGdl00Q_qvbeRvGnb8VbP13&export=download&confirm=t" class="btn-dl-secondary" id="driveDownloadBtn" target="_blank" rel="noopener noreferrer">
         ☁️&nbsp;&nbsp;구글드라이브 대체 다운로드
       </a>
       <div class="dl-alert">기본 다운로드가 안 열리면 위 <strong>구글드라이브 대체 다운로드</strong> 버튼을 눌러주세요.</div>
-      <a href="setup_installer.exe" download class="btn-dl-secondary" id="starterDownloadBtn">
+      <a href="HaewadalPMS_Supabase_Starter.zip" download class="btn-dl-secondary" id="starterDownloadBtn">
         ☁️&nbsp;&nbsp;Supabase 연동 스타터 다운로드
       </a>
       <span class="dl-meta">setup.exe · 약 14MB · 월정액 3~4만원 · Windows 64비트 전용</span>
-      <span class="dl-meta">Supabase 연동 스타터 다운로드 버튼도 최신 setup.exe로 연결됩니다.</span>
+      <span class="dl-meta">Supabase 연동 스타터 버튼은 HaewadalPMS_Supabase_Starter.zip으로 연결됩니다.</span>
       <span class="dl-meta">최신 반영: 2026-03-20 · 예약 기본시간/달력 선택 + 날짜조회 + 카드 클릭 투숙정보</span>
       <span class="dl-meta" id="releaseMeta">최신 버전: 확인 중...</span>
       <span class="dl-meta" id="releaseNotesMeta">최근 변경사항: 확인 중...</span>
@@ -1189,12 +1189,12 @@
           starterBtnEl.setAttribute('aria-label', `Supabase 연동 스타터 다운로드 v${version}`);
           try {
             const s = new URL(starterDownloadUrl, window.location.href);
-            const starterFile = decodeURIComponent(s.pathname.split('/').pop() || 'setup.exe');
-            starterBtnEl.setAttribute('download', starterFile);
-          } catch {
-            starterBtnEl.setAttribute('download', 'setup.exe');
+              const starterFile = decodeURIComponent(s.pathname.split('/').pop() || 'HaewadalPMS_Supabase_Starter.zip');
+              starterBtnEl.setAttribute('download', starterFile);
+            } catch {
+              starterBtnEl.setAttribute('download', 'HaewadalPMS_Supabase_Starter.zip');
+            }
           }
-        }
         if (reservationBtnEl) {
           const target = reservationUrl || defaultReservationUrl;
           reservationBtnEl.setAttribute('href', target);
@@ -1282,6 +1282,7 @@
 </script>
 </body>
 </html>
+
 
 
 

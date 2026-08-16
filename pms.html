@@ -429,6 +429,15 @@
       text-underline-offset: 3px;
     }
 
+    .btn-kakao {
+      display: inline-flex; align-items: center; justify-content: center; gap: .6rem;
+      background: #FEE500; padding: 1rem 1.7rem; border-radius: 10px;
+      font-weight: 800; font-size: 1.05rem;
+      transition: filter .2s, transform .2s;
+    }
+    .support-box .btn-kakao { color: #191600; text-decoration: none; }
+    .btn-kakao:hover { filter: brightness(.94); transform: translateY(-2px); }
+
     footer {
       border-top: 1px solid var(--line);
       text-align: center;
@@ -586,7 +595,7 @@
   <main>
     <section class="hero">
       <div>
-        <p class="hero-badge">Windows 10/11 · 64bit · 월정액 3~4만원</p>
+        <p class="hero-badge">Windows 10/11 · 64bit · 월정액 3만원</p>
         <h1><span class="brand-script">해와달</span> PMS로<br>체크인부터 정산까지<br>한 화면에서 끝냅니다</h1>
         <p class="hero-sub">
           객실 상태, 예약, 체크인/체크아웃, 노쇼/환불, 일마감 정산까지
@@ -678,8 +687,12 @@
       <p class="section-label">Support</p>
       <h2>문의 및 위치 안내</h2>
       <div class="support-box">
+        <p style="margin-bottom:1.1rem;">
+          <a class="btn-kakao" data-kakao-cta="💬 카카오톡으로 도입 상담 (월 3만원)"
+             href="mailto:minkim5296@naver.com?subject=%ED%95%B4%EC%99%80%EB%8B%ACPMS%20%EB%8F%84%EC%9E%85%20%EB%AC%B8%EC%9D%98">✉ 이메일로 도입 상담 (월 3만원)</a>
+        </p>
         <p>전화 문의: <a href="tel:0336415557">033-641-5557</a></p>
-        <p>이메일: <a href="mailto:minkim5296@naver.com">minkim5296@naver.com</a></p>
+        <p>이메일: <a href="mailto:minkim5296@naver.com?subject=%ED%95%B4%EC%99%80%EB%8B%ACPMS%20%EB%8F%84%EC%9E%85%20%EB%AC%B8%EC%9D%98">minkim5296@naver.com</a></p>
         <p>주소: 강원특별자치도 강릉시 경강로2067번길 8 (임당동)</p>
         <p>주차: 내부 주차 만차 시 바로 옆 공영주차장 이용 가능</p>
       </div>
@@ -703,7 +716,7 @@
   <button type="button" class="floating-menu-open" data-open-quick-menu="true" aria-label="큰 메뉴 열기" aria-controls="quickMenuDialog" aria-expanded="false">☰ 메뉴 열기</button>
 
   <footer>
-    <p><strong>해와달모텔 PMS</strong> · Windows 10/11 x64 · 월정액 3~4만원</p>
+    <p><strong>해와달모텔 PMS</strong> · Windows 10/11 x64 · 월정액 3만원</p>
     <p>© 2026 해와달 PMS. 계약된 사업장 외 무단 배포·재판매 금지.</p>
   </footer>
 
@@ -784,6 +797,24 @@
         });
         console.warn('update manifest load failed', err);
       }
+    })();
+  </script>
+  <!-- ══ 카카오톡 채널 상담 링크 (한 곳에서만 관리) ══ -->
+  <script>
+    /* 카카오톡 채널 관리자센터 > 채널 정보 > 채널 URL 값을 그대로 붙여넣으세요.
+       예시 형태: https://pf.kakao.com/_abcdEF
+       비워두면 상담 버튼은 이메일 문의로 동작합니다. */
+    const KAKAO_CHANNEL_URL = "";
+
+    (function () {
+      if (!KAKAO_CHANNEL_URL) return;
+      var chatUrl = KAKAO_CHANNEL_URL.replace(/\/+$/, "") + "/chat";
+      document.querySelectorAll("[data-kakao-cta]").forEach(function (el) {
+        el.href = chatUrl;
+        el.target = "_blank";
+        el.rel = "noopener noreferrer";
+        el.textContent = el.dataset.kakaoCta;
+      });
     })();
   </script>
 </body>

@@ -99,7 +99,7 @@
         "name": "해와달모텔 PMS 가격은 얼마인가요?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "해와달모텔 PMS는 월정액 3~4만원으로 이용 가능합니다."
+          "text": "해와달모텔 PMS는 월정액 3만원으로 이용 가능합니다."
         }
       },
       {
@@ -689,6 +689,14 @@
       background: rgba(255,255,255,.12);
       transform: translateY(-2px);
     }
+    .btn-kakao {
+      display: inline-flex; align-items: center; justify-content: center; gap: .6rem;
+      background: #FEE500; color: #191600;
+      padding: 1rem 1.8rem; border-radius: 10px;
+      text-decoration: none; font-weight: 800; font-size: 1.05rem;
+      transition: filter .2s, transform .2s;
+    }
+    .btn-kakao:hover { filter: brightness(.94); transform: translateY(-2px); }
     .dl-alert {
       margin-top: .2rem;
       width: min(92vw, 560px);
@@ -827,7 +835,7 @@
   <div><span class="num">30개</span><span class="lbl">기본 객실 관리</span></div>
   <div><span class="num">3등급</span><span class="lbl">역할별 권한 분리</span></div>
   <div><span class="num">100%</span><span class="lbl">오프라인 작동</span></div>
-  <div><span class="num">3~4만원/월</span><span class="lbl">단일 업장 라이선스</span></div>
+  <div><span class="num">3만원/월</span><span class="lbl">단일 업장 라이선스</span></div>
 </div>
 
 <!-- ══ 실제 매장 사진 ══ -->
@@ -944,7 +952,7 @@
         <tr><td>역할별 권한 관리</td><td class="cross">✗</td><td class="check">✓</td><td class="check">✓</td></tr>
         <tr><td>개인정보 자동 익명화</td><td class="cross">✗</td><td class="cross">✗</td><td class="check">✓</td></tr>
         <tr><td>인터넷 없이 작동</td><td class="check">✓</td><td class="cross">✗</td><td class="check">✓</td></tr>
-        <tr><td>월정액 비용</td><td>없음</td><td>3~15만원/월</td><td><strong>3~4만원/월</strong></td></tr>
+        <tr><td>월정액 비용</td><td>없음</td><td>3~15만원/월</td><td><strong>3만원/월</strong></td></tr>
       </tbody>
     </table>
   </div>
@@ -971,16 +979,15 @@
       <a href="HaewadalPMS_Supabase_Starter.zip" download class="btn-dl-secondary" id="starterDownloadBtn">
         ☁️&nbsp;&nbsp;Supabase 연동 스타터 다운로드
       </a>
-      <span class="dl-meta">setup.exe · 약 14MB · 월정액 3~4만원 · Windows 64비트 전용</span>
+      <span class="dl-meta">setup.exe · 약 14MB · 월정액 3만원 · Windows 64비트 전용</span>
       <span class="dl-meta">Supabase 연동 스타터 버튼은 HaewadalPMS_Supabase_Starter.zip으로 연결됩니다.</span>
       <span class="dl-meta">최신 반영: 2026-03-20 · 예약 기본시간/달력 선택 + 날짜조회 + 카드 클릭 투숙정보</span>
       <span class="dl-meta" id="releaseMeta">최신 버전: 확인 중...</span>
       <span class="dl-meta" id="releaseNotesMeta">최근 변경사항: 확인 중...</span>
+      <a class="btn-kakao" id="pmsConsultBtn" data-kakao-cta="💬  카카오톡으로 도입 상담 (월 3만원)"
+         href="mailto:minkim5296@naver.com?subject=%ED%95%B4%EC%99%80%EB%8B%ACPMS%20%EB%8F%84%EC%9E%85%20%EB%AC%B8%EC%9D%98">✉&nbsp;&nbsp;이메일로 도입 상담 (월 3만원)</a>
       <span class="dl-meta">
-        문의·구매 상담:
-        <a href="mailto:minkim5296@naver.com" style="color:var(--moon2);">minkim5296@naver.com</a>
-        &nbsp;|&nbsp;
-        카카오톡: <strong style="color:var(--moon2);">@해와달PMS</strong>
+        문의·구매 상담: <a href="mailto:minkim5296@naver.com?subject=%ED%95%B4%EC%99%80%EB%8B%ACPMS%20%EB%8F%84%EC%9E%85%20%EB%AC%B8%EC%9D%98" style="color:var(--moon2);">minkim5296@naver.com</a>
       </span>
     </div>
   </div>
@@ -1280,6 +1287,24 @@
     }
   })();
 </script>
+  <!-- ══ 카카오톡 채널 상담 링크 (한 곳에서만 관리) ══ -->
+  <script>
+    /* 카카오톡 채널 관리자센터 > 채널 정보 > 채널 URL 값을 그대로 붙여넣으세요.
+       예시 형태: https://pf.kakao.com/_abcdEF
+       비워두면 상담 버튼은 이메일 문의로 동작합니다. */
+    const KAKAO_CHANNEL_URL = "";
+
+    (function () {
+      if (!KAKAO_CHANNEL_URL) return;
+      var chatUrl = KAKAO_CHANNEL_URL.replace(/\/+$/, "") + "/chat";
+      document.querySelectorAll("[data-kakao-cta]").forEach(function (el) {
+        el.href = chatUrl;
+        el.target = "_blank";
+        el.rel = "noopener noreferrer";
+        el.textContent = el.dataset.kakaoCta;
+      });
+    })();
+  </script>
 </body>
 </html>
 

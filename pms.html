@@ -31,11 +31,11 @@
     "name": "해와달모텔 PMS",
     "applicationCategory": "BusinessApplication",
     "operatingSystem": "Windows 10, Windows 11",
-    "offers": {
-      "@type": "Offer",
-      "price": "30000",
-      "priceCurrency": "KRW"
-    },
+    "offers": [
+      { "@type": "Offer", "name": "월정액", "price": "30000", "priceCurrency": "KRW" },
+      { "@type": "Offer", "name": "연납(1개월 할인)", "price": "330000", "priceCurrency": "KRW" },
+      { "@type": "Offer", "name": "2호점부터 월정액(반값)", "price": "15000", "priceCurrency": "KRW" }
+    ],
     "url": "https://ealthy3-arch.github.io/pms.html",
     "description": "체크인·체크아웃·노쇼·환불·일마감 정산까지 한 화면에서 관리하는 모텔 전용 PMS"
   }
@@ -595,7 +595,7 @@
   <main>
     <section class="hero">
       <div>
-        <p class="hero-badge">Windows 10/11 · 64bit · 월정액 3만원</p>
+        <p class="hero-badge">Windows 10/11 · 64bit · 월정액 3만원 / 연납 33만원</p>
         <h1><span class="brand-script">해와달</span> PMS로<br>체크인부터 정산까지<br>한 화면에서 끝냅니다</h1>
         <p class="hero-sub">
           객실 상태, 예약, 체크인/체크아웃, 노쇼/환불, 일마감 정산까지
@@ -716,7 +716,7 @@
   <button type="button" class="floating-menu-open" data-open-quick-menu="true" aria-label="큰 메뉴 열기" aria-controls="quickMenuDialog" aria-expanded="false">☰ 메뉴 열기</button>
 
   <footer>
-    <p><strong>해와달모텔 PMS</strong> · Windows 10/11 x64 · 월정액 3만원</p>
+    <p><strong>해와달모텔 PMS</strong> · Windows 10/11 x64 · 월정액 3만원 / 연납 33만원 · 2호점부터 반값</p>
     <p>© 2026 해와달 PMS. 계약된 사업장 외 무단 배포·재판매 금지.</p>
   </footer>
 

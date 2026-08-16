@@ -48,7 +48,11 @@
     "alternateName": "해와달 모텔 PMS",
     "operatingSystem": "Windows 10, Windows 11",
     "applicationCategory": "BusinessApplication",
-    "offers": { "@type": "Offer", "price": "30000", "priceCurrency": "KRW" },
+    "offers": [
+      { "@type": "Offer", "name": "월정액", "price": "30000", "priceCurrency": "KRW" },
+      { "@type": "Offer", "name": "연납(1개월 할인)", "price": "330000", "priceCurrency": "KRW" },
+      { "@type": "Offer", "name": "2호점부터 월정액(반값)", "price": "15000", "priceCurrency": "KRW" }
+    ],
     "description": "모텔 전용 객실 관리 프로그램. 체크인·체크아웃·노쇼·환불·일마감 정산·직원 권한 관리 기능 포함.",
     "softwareVersion": "7.1.0",
     "inLanguage": "ko"
@@ -99,7 +103,7 @@
         "name": "해와달모텔 PMS 가격은 얼마인가요?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "해와달모텔 PMS는 월정액 3만원으로 이용 가능합니다."
+          "text": "월정액 3만원, 연납 33만원(1개월 할인)입니다. 2호점부터는 반값이 적용되어 월 1.5만원, 연납 16.5만원입니다."
         }
       },
       {
@@ -648,6 +652,32 @@
     .feature-card h3 { font-weight: 700; margin-bottom: .5rem; font-size: 1rem; }
     .feature-card p  { color: var(--muted); font-size: .88rem; line-height: 1.7; }
 
+    /* ── 요금제 ── */
+    #pricing { background: #fff; }
+    .price-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(260px,1fr));
+      gap: 1.5rem; margin-top: 3.5rem;
+    }
+    .price-card {
+      position: relative;
+      border: 1px solid var(--border); border-radius: 12px;
+      padding: 2rem; background: var(--paper);
+      transition: box-shadow .25s, transform .25s;
+    }
+    .price-card:hover { box-shadow: 0 12px 40px rgba(0,0,0,.08); transform: translateY(-3px); }
+    .price-card.featured { border: 2px solid var(--sea); background: #fff; }
+    .price-badge {
+      position: absolute; top: -12px; left: 1.8rem;
+      background: var(--sea); color: #fff;
+      font-size: .74rem; font-weight: 800;
+      padding: .3rem .8rem; border-radius: 999px;
+    }
+    .price-name { font-weight: 700; font-size: 1rem; margin-bottom: .6rem; }
+    .price-amount { font-size: 2rem; font-weight: 900; letter-spacing: -.02em; }
+    .price-unit { font-size: .9rem; font-weight: 700; color: var(--muted); }
+    .price-save { display: inline-block; margin-top: .5rem; font-size: .82rem; font-weight: 800; color: #0b7a43; }
+    .price-note { color: var(--muted); font-size: .86rem; line-height: 1.7; margin-top: .9rem; }
+
     /* ── 비교표 ── */
     #compare { background: var(--paper); }
     .compare-wrap { overflow-x: auto; margin-top: 3rem; }
@@ -783,6 +813,7 @@
   <ul>
     <li><a href="#features">기능</a></li>
     <li><a href="#compare">비교</a></li>
+    <li><a href="#pricing">요금제</a></li>
     <li><a href="#faq">FAQ</a></li>
     <li><a href="/pms.html">PMS 상세</a></li>
     <li><a href="https://www.yeogi.com/domestic-accommodations/63115" id="topReservationLink" target="_blank" rel="noopener noreferrer" aria-label="강릉 해와달 예약 페이지 새 창으로 이동">예약 바로가기</a></li>
@@ -990,6 +1021,35 @@
   </div>
 </section>
 
+<!-- ══ 요금제 ══ -->
+<section id="pricing">
+  <div class="fade-up">
+    <div class="section-label">Pricing</div>
+    <h2 class="section-title">업장 수에 맞춰<br>고르시면 됩니다</h2>
+    <p class="section-sub">세 가지 모두 기능 차이가 없습니다. 결제 방식만 다릅니다.</p>
+  </div>
+  <div class="price-grid fade-up">
+    <div class="price-card">
+      <div class="price-name">월정액</div>
+      <div><span class="price-amount">3만원</span><span class="price-unit">&nbsp;/ 월</span></div>
+      <p class="price-note">단일 업장 라이선스입니다. 매달 결제하며 언제든 중단하실 수 있습니다.</p>
+    </div>
+    <div class="price-card featured">
+      <span class="price-badge">1개월 할인</span>
+      <div class="price-name">연납</div>
+      <div><span class="price-amount">33만원</span><span class="price-unit">&nbsp;/ 년</span></div>
+      <span class="price-save">월정액 12개월 36만원 대비 3만원 절약</span>
+      <p class="price-note">1년치를 한 번에 결제하시면 한 달분이 빠집니다. 단일 업장 기준입니다.</p>
+    </div>
+    <div class="price-card">
+      <div class="price-name">2호점부터</div>
+      <div><span class="price-amount">반값</span></div>
+      <span class="price-save">월 1.5만원 · 연납 16.5만원</span>
+      <p class="price-note">이미 사용 중이신 사장님이 지점을 추가하실 때 적용됩니다. 업장마다 별도 설치·별도 데이터로 운영됩니다.</p>
+    </div>
+  </div>
+</section>
+
 <!-- ══ 다운로드 CTA ══ -->
 <section id="download">
   <div class="fade-up">
@@ -1011,7 +1071,7 @@
       <a href="HaewadalPMS_Supabase_Starter.zip" download class="btn-dl-secondary" id="starterDownloadBtn">
         ☁️&nbsp;&nbsp;Supabase 연동 스타터 다운로드
       </a>
-      <span class="dl-meta">setup.exe · 약 14MB · 월정액 3만원 · Windows 64비트 전용</span>
+      <span class="dl-meta">setup.exe · 약 14MB · 월정액 3만원 / 연납 33만원 · Windows 64비트 전용</span>
       <span class="dl-meta">Supabase 연동 스타터 버튼은 HaewadalPMS_Supabase_Starter.zip으로 연결됩니다.</span>
       <span class="dl-meta">최신 반영: 2026-03-20 · 예약 기본시간/달력 선택 + 날짜조회 + 카드 클릭 투숙정보</span>
       <span class="dl-meta" id="releaseMeta">최신 버전: 확인 중...</span>
@@ -1032,6 +1092,10 @@
     <h2 class="section-title"><span class="brand-inline">해와달</span> 자주 묻는 질문</h2>
   </div>
   <div class="faq-list fade-up">
+    <div class="faq-item">
+      <div class="faq-q">요금제가 어떻게 되나요?</div>
+      <div class="faq-a">월정액 3만원, 연납 33만원입니다. 연납은 12개월치 36만원에서 한 달분이 빠진 금액입니다. 2호점부터는 반값이 적용되어 월 1.5만원, 연납 16.5만원입니다. 요금제에 따른 기능 차이는 없습니다.</div>
+    </div>
     <div class="faq-item">
       <div class="faq-q">모텔 관리 프로그램을 처음 써보는데 어렵지 않을까요?</div>
       <div class="faq-a">설치 후 첫 화면이 곧 객실 현황판이라 따로 배울 것이 거의 없습니다. 기존에 장부나 엑셀로 관리하시던 분들도 체크인·체크아웃·일마감 정산까지 당일에 바로 사용하십니다.</div>

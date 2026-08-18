@@ -50,6 +50,19 @@
     p { line-height: 1.75; }
     .card { background: #fff; border: 1px solid #e5e7eb; border-radius: 10px; padding: 18px; margin-top: 16px; }
     a.btn { display: inline-block; margin-top: 14px; padding: 10px 16px; border-radius: 8px; text-decoration: none; background: #1f4d6b; color: #fff; }
+    .pms-cta { background: #fff; border: 2px solid #1a3a4a; border-radius: 12px; padding: 20px; margin-top: 22px; }
+    .pms-cta h2 { margin: 0 0 10px; font-size: 1.24rem; font-weight: 900; letter-spacing: -.01em; }
+    .pms-prices { margin: 0 0 14px; padding: 0; list-style: none; color: #374151; line-height: 1.9; font-weight: 600; }
+    .pms-prices strong { color: #0f1117; }
+    .pms-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+    .btn-kakao { display: inline-flex; align-items: center; justify-content: center; gap: .5rem;
+      background: #FEE500; color: #191600; text-decoration: none;
+      padding: .85rem 1.4rem; border-radius: 8px; font-weight: 800;
+      transition: filter .2s, transform .2s; }
+    .btn-kakao:hover { filter: brightness(.94); transform: translateY(-2px); }
+    .btn-outline { display: inline-flex; align-items: center; justify-content: center;
+      padding: .85rem 1.4rem; border-radius: 8px; text-decoration: none;
+      border: 1.5px solid #1a3a4a; color: #1a3a4a; font-weight: 800; background: #fff; }
     .menu-launch-wrap { margin-top: 1rem; }
     .menu-open-btn {
       width: 100%;
@@ -194,9 +207,41 @@
         </div>
       </div>
     </div>
+    <div class="pms-cta">
+      <h2>모텔 관리 프로그램 도입을 검토 중이신가요?</h2>
+      <ul class="pms-prices">
+        <li>월정액 <strong>3만원</strong> · 연납 <strong>33만원</strong>(1개월 할인)</li>
+        <li>2호점부터 <strong>반값</strong> — 월 1.5만원 · 연납 16.5만원</li>
+        <li>Windows 10/11 전용 · 설치 후 바로 사용 · 요금제별 기능 차이 없음</li>
+      </ul>
+      <div class="pms-actions">
+        <a class="btn-kakao" data-kakao-cta="💬 카카오톡 도입 상담" href="mailto:minkim5296@naver.com?subject=%ED%95%B4%EC%99%80%EB%8B%ACPMS%20%EB%8F%84%EC%9E%85%20%EB%AC%B8%EC%9D%98">✉ 이메일 도입 상담</a>
+        <a class="btn-outline" href="/pms.html">PMS 상세 보기</a>
+        <a class="btn-outline" href="/index.html#pricing">요금제 전체 보기</a>
+      </div>
+    </div>
+
     <a class="btn" href="https://ealthy3-arch.github.io/index.html?v=20260311-homefix">해와달모텔 PMS 메인으로 이동</a>
   </div>
   <button type="button" class="floating-menu-open" data-open-quick-menu="true" aria-label="큰 메뉴 열기" aria-controls="quickMenuDialog" aria-expanded="false">☰ 메뉴 열기</button>
+  <!-- ══ 카카오톡 채널 상담 링크 (한 곳에서만 관리) ══ -->
+  <script>
+    /* 카카오톡 채널 관리자센터 > 채널 정보 > 채널 URL 값을 붙여넣으세요.
+       비워두면 상담 버튼은 이메일 문의로 동작합니다. */
+    const KAKAO_CHANNEL_URL = "https://pf.kakao.com/_DDISX";
+
+    (function () {
+      if (!KAKAO_CHANNEL_URL) return;
+      var chatUrl = KAKAO_CHANNEL_URL.replace(/\/+$/, "") + "/chat";
+      document.querySelectorAll("[data-kakao-cta]").forEach(function (el) {
+        el.href = chatUrl;
+        el.target = "_blank";
+        el.rel = "noopener noreferrer";
+        el.textContent = el.dataset.kakaoCta;
+      });
+    })();
+  </script>
+
   <script>
     (function () {
       const openButtons = Array.from(document.querySelectorAll('[data-open-quick-menu="true"]'));

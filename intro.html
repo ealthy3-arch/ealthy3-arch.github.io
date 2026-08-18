@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>모텔 관리 프로그램 해와달 PMS | 월 3만원 소개</title>
+  <meta name="description" content="모텔을 직접 운영하며 만든 모텔 관리 프로그램. 체크인부터 일마감 정산까지 한 화면. 월 3만원, 연납 33만원, 2호점부터 반값.">
+  <!-- 카톡 전송 전용 페이지. 색인하면 index.html과 "모텔 관리 프로그램" 키워드가
+       겹쳐 순위가 분산되므로 noindex 처리합니다. 링크는 그대로 따라갑니다. -->
+  <meta name="robots" content="noindex, follow">
+  <meta name="theme-color" content="#1a3a4a">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+
+  <!-- 카카오톡 공유 미리보기 -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="모텔 관리 프로그램 해와달 PMS · 월 3만원">
+  <meta property="og:description" content="모텔을 직접 운영하며 만들었습니다. 체크인부터 일마감 정산까지 한 화면에서. 연납 33만원, 2호점부터 반값.">
+  <meta property="og:url" content="https://ealthy3-arch.github.io/intro.html">
+  <meta property="og:image" content="https://ealthy3-arch.github.io/og-image.png?v=20260818-intro">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:site_name" content="해와달 PMS">
+  <meta property="og:locale" content="ko_KR">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="모텔 관리 프로그램 해와달 PMS · 월 3만원">
+  <meta name="twitter:description" content="모텔을 직접 운영하며 만들었습니다. 체크인부터 일마감 정산까지 한 화면에서.">
+  <meta name="twitter:image" content="https://ealthy3-arch.github.io/og-image.png?v=20260818-intro">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --ink: #0f1117;
+      --paper: #faf9f6;
+      --sea: #1a3a4a;
+      --sea2: #254d63;
+      --moon: #c8a96e;
+      --muted: #5a6472;
+      --line: #e3dfd7;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, Arial, sans-serif;
+      background: var(--paper);
+      color: var(--ink);
+      line-height: 1.7;
+      -webkit-text-size-adjust: 100%;
+    }
+    .sheet { max-width: 560px; margin: 0 auto; padding: 0 20px 40px; }
+
+    header {
+      background: var(--sea);
+      color: #fff;
+      margin: 0 -20px 26px;
+      padding: 34px 24px 30px;
+      text-align: center;
+    }
+    .eyebrow {
+      display: inline-block;
+      background: rgba(255,255,255,.14);
+      border: 1px solid rgba(255,255,255,.28);
+      border-radius: 999px;
+      padding: .3rem .95rem;
+      font-size: .9rem; font-weight: 700;
+      margin-bottom: 14px;
+    }
+    header h1 {
+      margin: 0 0 12px;
+      font-size: clamp(1.55rem, 6.2vw, 2rem);
+      font-weight: 900; line-height: 1.36; letter-spacing: -.02em;
+    }
+    header h1 em { font-style: normal; color: #f0dcae; }
+    header p { margin: 0; font-size: 1.04rem; color: #d7e2ea; font-weight: 500; }
+
+    h2 {
+      font-size: 1.2rem; font-weight: 900; letter-spacing: -.01em;
+      margin: 30px 0 12px;
+    }
+    .lead { font-size: 1.08rem; font-weight: 600; color: #2c3644; margin: 0 0 6px; }
+
+    ul.pains { list-style: none; margin: 0; padding: 0; }
+    ul.pains li {
+      background: #fff; border: 1px solid var(--line); border-radius: 12px;
+      padding: 13px 15px; margin-bottom: 9px;
+      font-size: 1.03rem; font-weight: 600; color: #33404f;
+    }
+    ul.pains li b { color: var(--ink); }
+
+    .solve {
+      background: #fff; border: 2px solid var(--sea);
+      border-radius: 14px; padding: 18px 17px; margin-top: 4px;
+    }
+    .solve p { margin: 0 0 10px; font-size: 1.04rem; font-weight: 600; color: #33404f; }
+    .solve p:last-child { margin-bottom: 0; }
+    .solve b { color: var(--sea); }
+
+    .price-box {
+      background: #fff; border: 1px solid var(--line);
+      border-radius: 14px; padding: 18px 17px;
+    }
+    .price-row {
+      display: flex; justify-content: space-between; align-items: baseline;
+      gap: 10px; padding: 11px 0; border-bottom: 1px dashed var(--line);
+    }
+    .price-row:last-child { border-bottom: 0; }
+    .price-row .label { font-weight: 700; color: #33404f; font-size: 1.02rem; }
+    .price-row .value { font-weight: 900; font-size: 1.3rem; letter-spacing: -.02em; white-space: nowrap; }
+    .price-row .value small { font-size: .85rem; font-weight: 700; color: var(--muted); }
+    .price-tag {
+      display: inline-block; background: #0b7a43; color: #fff;
+      font-size: .76rem; font-weight: 800; padding: .12rem .5rem;
+      border-radius: 999px; margin-left: 6px; vertical-align: middle;
+    }
+    .price-note { margin: 12px 0 0; font-size: .95rem; color: var(--muted); font-weight: 600; }
+
+    .cta { margin-top: 26px; }
+    .btn {
+      display: flex; align-items: center; justify-content: center; gap: .5rem;
+      width: 100%; padding: 17px 18px; margin-bottom: 11px;
+      border-radius: 12px; text-decoration: none;
+      font-size: 1.1rem; font-weight: 800; letter-spacing: -.01em;
+      transition: filter .2s, transform .15s;
+    }
+    .btn:active { transform: translateY(1px); }
+    .btn-kakao { background: #FEE500; color: #191600; }
+    .btn-kakao:hover { filter: brightness(.95); }
+    .btn-line { background: #fff; color: var(--sea); border: 1.5px solid var(--sea); }
+    .btn-line:hover { background: #f3f7fa; }
+
+    footer {
+      margin-top: 30px; padding-top: 18px; border-top: 1px solid var(--line);
+      font-size: .92rem; color: var(--muted); font-weight: 600; text-align: center;
+    }
+    footer a { color: var(--sea2); font-weight: 800; }
+  </style>
+</head>
+
+<body>
+  <div class="sheet">
+
+    <header>
+      <span class="eyebrow">Windows 전용 · 설치 후 바로 사용</span>
+      <h1>모텔 관리,<br><em>아직 장부랑 엑셀</em>로<br>하고 계신가요?</h1>
+      <p>모텔을 직접 운영하면서 만든 관리 프로그램입니다.</p>
+    </header>
+
+    <h2>이런 일, 겪어보셨을 겁니다</h2>
+    <ul class="pains">
+      <li>야간 근무자가 <b>어느 방이 비었는지</b> 몰라 전화로 확인</li>
+      <li>일마감 때 <b>현금이 안 맞아</b> 장부를 처음부터 다시</li>
+      <li>노쇼·환불 처리가 <b>사람마다 제각각</b>이라 정산이 꼬임</li>
+      <li>직원 바뀔 때마다 <b>인수인계에 며칠</b>씩</li>
+    </ul>
+
+    <h2>한 화면에서 끝납니다</h2>
+    <div class="solve">
+      <p><b>실시간 객실 현황판</b> — 이용가능·사용중·청소중을 색으로 구분. 켜면 바로 보입니다.</p>
+      <p><b>체크인부터 일마감까지</b> 정해진 순서대로. 배울 게 거의 없습니다.</p>
+      <p><b>관리자·프런트·청소</b> 3단계 권한 분리. 직원이 건드리면 안 되는 건 안 보입니다.</p>
+      <p><b>인터넷 없어도 작동</b>합니다. 데이터는 그 PC에만 저장됩니다.</p>
+    </div>
+
+    <h2>요금</h2>
+    <div class="price-box">
+      <div class="price-row">
+        <span class="label">월정액</span>
+        <span class="value">3만원 <small>/ 월</small></span>
+      </div>
+      <div class="price-row">
+        <span class="label">연납<span class="price-tag">1개월 할인</span></span>
+        <span class="value">33만원 <small>/ 년</small></span>
+      </div>
+      <div class="price-row">
+        <span class="label">2호점부터</span>
+        <span class="value">반값 <small>월 1.5만원</small></span>
+      </div>
+      <p class="price-note">요금제에 따른 기능 차이는 없습니다. 결제 방식만 다릅니다.</p>
+    </div>
+
+    <div class="cta">
+      <a class="btn btn-kakao" data-kakao-cta="💬 카카오톡으로 물어보기"
+         href="mailto:minkim5296@naver.com?subject=%ED%95%B4%EC%99%80%EB%8B%ACPMS%20%EB%8F%84%EC%9E%85%20%EB%AC%B8%EC%9D%98">✉ 이메일로 물어보기</a>
+      <a class="btn btn-line" href="/pms.html">기능 자세히 보기</a>
+      <a class="btn btn-line" href="/index.html#download">설치파일 받기</a>
+    </div>
+
+    <footer>
+      <strong>해와달 PMS</strong> · 강원 강릉 해와달모텔 운영<br>
+      Windows 10 / 11 (64비트) 전용 · <a href="/index.html">공식 홈페이지</a>
+    </footer>
+
+  </div>
+
+  <!-- ══ 카카오톡 채널 상담 링크 (한 곳에서만 관리) ══ -->
+  <script>
+    /* 카카오톡 채널 관리자센터 > 채널 정보 > 채널 URL 값을 붙여넣으세요.
+       비워두면 상담 버튼은 이메일 문의로 동작합니다. */
+    const KAKAO_CHANNEL_URL = "https://pf.kakao.com/_DDISX";
+
+    (function () {
+      if (!KAKAO_CHANNEL_URL) return;
+      var chatUrl = KAKAO_CHANNEL_URL.replace(/\/+$/, "") + "/chat";
+      document.querySelectorAll("[data-kakao-cta]").forEach(function (el) {
+        el.href = chatUrl;
+        el.target = "_blank";
+        el.rel = "noopener noreferrer";
+        el.textContent = el.dataset.kakaoCta;
+      });
+    })();
+  </script>
+</body>
+</html>
